@@ -7,6 +7,8 @@ convert_dir = '/convert'  # Location for input files
 path = Path(os.path.dirname(__file__))
 content_path = Path(os.path.dirname(__file__) + convert_dir)
 
+os.chdir(path)
+
 dict_object = dict()
 
 with open('modules.json', 'w') as data:
