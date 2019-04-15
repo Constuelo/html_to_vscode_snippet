@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 import json
 
-convert_dir = '/convert'  # Location for input files
+convert_dir = '/convert'
 
 path = Path(os.path.dirname(__file__))
 content_path = Path(os.path.dirname(__file__) + convert_dir)
@@ -12,12 +12,12 @@ os.chdir(path)
 dict_object = dict()
 
 with open('modules.json', 'w') as data:
-    data.write("{\n")
+    data.write('{\n')
 
     for d, s, f in os.walk(content_path):
         for file in f:
             if '.gitignore' not in file:
-                name = file.split(".")[0]
+                name = file.split('.')[0]
                 html = os.path.join(d, file)                
                 
                 with open(html, 'r') as html:
@@ -29,6 +29,6 @@ with open('modules.json', 'w') as data:
                     data.write('        "body": {},\n'.format(json.dumps(dict_object[name])))
                     data.write('        "description": "{}"\n    }},\n'.format(name))
 
-    data.write("\n}")
+    data.write('\n}')
 
-print(f'All good.')
+print('All good.')
