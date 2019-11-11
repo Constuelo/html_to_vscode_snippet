@@ -2,16 +2,15 @@ import os
 from pathlib import Path
 import json
 
-convert_dir = '/convert'
+convert_dir = 'convert'
+modules_json = 'modules.json'
 
 path = Path(os.path.dirname(__file__))
-content_path = Path(os.path.dirname(__file__) + convert_dir)
-
-os.chdir(path)
+content_path = Path(path).joinpath(convert_dir)
 
 dict_object = dict()
 
-with open('modules.json', 'w') as data:
+with open(Path(path).joinpath(modules_json), 'w') as data:
     data.write('{\n')
 
     for d, s, f in os.walk(content_path):
